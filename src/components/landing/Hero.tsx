@@ -60,7 +60,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/60 bg-card/50 backdrop-blur-sm mb-8"
           >
             <Layers className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Decision Intelligence Platform</span>
+            <span className="text-sm text-muted-foreground">Decision Trade-Off Simulator</span>
           </motion.div>
           
           {/* Main headline */}
