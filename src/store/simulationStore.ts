@@ -2,6 +2,12 @@ import { create } from 'zustand';
 import { simulateImpact, ImpactMetrics, SimulationInput } from '@/lib/simulation';
 import { generateInsight } from '@/lib/ai-insights';
 
+export interface ComparisonScenario {
+  investmentLevel: number;
+  metrics: ImpactMetrics;
+  label?: string;
+}
+
 interface SimulationState {
   // Primary input: Renewable energy investment percentage
   investmentLevel: number;
@@ -15,8 +21,17 @@ interface SimulationState {
   isGeneratingInsight: boolean;
   insight: string;
   
+  // Comparison mode
+  comparisonMode: boolean;
+  scenarioA: ComparisonScenario | null;
+  scenarioB: ComparisonScenario | null;
+  
   // Actions
   setInvestmentLevel: (level: number) => Promise<void>;
+  toggleComparisonMode: () => void;
+  lockScenarioA: () => void;
+  lockScenarioB: () => void;
+  clearComparison: () => void;
 }
 
 const initialInput: SimulationInput = { renewableInvestmentPercent: 35 };
@@ -29,6 +44,10 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
   previousMetrics: initialMetrics,
   isGeneratingInsight: false,
   insight: "At 35% renewable investment, you're balancing job growth with manageable transition costs. Carbon emissions are declining steadily, though grid stability requires attention during this phase.",
+  
+  comparisonMode: false,
+  scenarioA: null,
+  scenarioB: null,
   
   setInvestmentLevel: async (level) => {
     const state = get();
@@ -58,5 +77,40 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
       console.error('Failed to generate insight:', error);
       set({ isGeneratingInsight: false });
     }
+  },
+  
+  toggleComparisonMode: () => {
+    const state = get();
+    set({ comparisonMode: !state.comparisonMode });
+  },
+  
+  lockScenarioA: () => {
+    const state = get();
+    set({
+      scenarioA: {
+        investmentLevel: state.investmentLevel,
+        metrics: state.metrics,
+        label: `Scenario A (${state.investmentLevel}%)`,
+      },
+    });
+  },
+  
+  lockScenarioB: () => {
+    const state = get();
+    set({
+      scenarioB: {
+        investmentLevel: state.investmentLevel,
+        metrics: state.metrics,
+        label: `Scenario B (${state.investmentLevel}%)`,
+      },
+    });
+  },
+  
+  clearComparison: () => {
+    set({
+      comparisonMode: false,
+      scenarioA: null,
+      scenarioB: null,
+    });
   },
 }));
