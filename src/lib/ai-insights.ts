@@ -41,7 +41,18 @@ export async function generateInsight(
             content: `You are an expert policy analyst explaining the consequences of renewable energy investment decisions. 
             Be concise (2-3 sentences), factual, and highlight trade-offs. 
             Explain what changed, why it changed, and the trade-off involved. 
-            Use clear, policy-lab language. No fluff.`,
+            Use clear, policy-lab language. No fluff.
+            
+            CRITICAL: Use uncertain language. Avoid certainty. Use words like:
+            - "suggests"
+            - "indicates"
+            - "appears"
+            - "may"
+            - "likely"
+            - "tends to"
+            
+            Never say "will definitely" or "guaranteed". This is a simulation, not a prediction.
+            Be honest about trade-offs. Some metrics improve while others degrade—acknowledge this tension.`,
           },
           {
             role: 'user',
@@ -114,29 +125,29 @@ function generateFallbackInsight(
   const hasJobGrowth = jobsChange > 5000;
   
   if (investment < 20) {
-    return `At ${investment}% renewable investment, you're maintaining status quo economics but missing critical decarbonization windows. Job creation remains modest, and public pressure for climate action will likely intensify. Consider: what's the cost of inaction?`;
+    return `At ${investment}% renewable investment, this suggests maintaining status quo economics but potentially missing critical decarbonization windows. Job creation appears modest, and public pressure for climate action may intensify. Consider: what's the cost of inaction?`;
   }
   
   if (investment < 40) {
     if (hasCostIncrease && hasStrongCarbonGain) {
-      return `At ${investment}%, carbon reduction is accelerating (${carbonChange > 0 ? '+' : ''}${carbonChange.toFixed(1)}%), but energy costs are rising due to transition infrastructure. This is the measured approach—effective for short-term stability but may require acceleration later.`;
+      return `At ${investment}%, carbon reduction appears to be accelerating (${carbonChange > 0 ? '+' : ''}${carbonChange.toFixed(1)}%), but energy costs are rising, likely due to transition infrastructure. This suggests a measured approach—may be effective for short-term stability but could require acceleration later.`;
     }
-    return `${investment}% investment represents a measured approach. You're seeing initial job growth and carbon reduction, while energy costs remain stable. Grid stability is strong. This is a common "safe" policy position.`;
+    return `${investment}% investment appears to represent a measured approach. Initial job growth and carbon reduction are visible, while energy costs remain relatively stable. Grid stability seems strong. This tends to be a common "safe" policy position.`;
   }
   
   if (investment < 60) {
     if (hasStabilityDip && hasStrongCarbonGain) {
-      return `At ${investment}%, you've entered the transition zone. Carbon reduction is significant (+${carbonChange.toFixed(1)}%), but grid stability faces pressure (${stabilityChange > 0 ? '+' : ''}${stabilityChange.toFixed(1)}%). This is the hardest phase—temporary disruption for long-term gain.`;
+      return `At ${investment}%, you've likely entered the transition zone. Carbon reduction appears significant (+${carbonChange.toFixed(1)}%), but grid stability faces pressure (${stabilityChange > 0 ? '+' : ''}${stabilityChange.toFixed(1)}%). This suggests the hardest phase—temporary disruption for potential long-term gain.`;
     }
-    return `At ${investment}%, transition effects are visible. Carbon reduction is strong, but grid stability and energy costs show the complexity of infrastructure change. Public approval remains high, but execution risk is elevated.`;
+    return `At ${investment}%, transition effects appear visible. Carbon reduction seems strong, but grid stability and energy costs indicate the complexity of infrastructure change. Public approval may remain high, but execution risk appears elevated.`;
   }
   
   if (investment < 80) {
     if (hasJobGrowth && !hasCostIncrease) {
-      return `${investment}% investment signals serious commitment. Emissions are dropping rapidly (+${carbonChange > 0 ? '+' : ''}${carbonChange.toFixed(1)}%), and the job market is transforming (+${jobsChange > 0 ? '+' : ''}${(jobsChange / 1000).toFixed(0)}K jobs). You're past the steepest cost increases, and battery storage investments are improving grid reliability.`;
+      return `${investment}% investment suggests serious commitment. Emissions appear to be dropping rapidly (+${carbonChange > 0 ? '+' : ''}${carbonChange.toFixed(1)}%), and the job market may be transforming (+${jobsChange > 0 ? '+' : ''}${(jobsChange / 1000).toFixed(0)}K jobs). You may be past the steepest cost increases, and battery storage investments could be improving grid reliability.`;
     }
-    return `${investment}% investment shows strong momentum. Carbon reduction and job creation are accelerating, while transition costs are stabilizing. The economic inflection point is approaching.`;
+    return `${investment}% investment suggests strong momentum. Carbon reduction and job creation appear to be accelerating, while transition costs may be stabilizing. The economic inflection point could be approaching.`;
   }
   
-  return `At ${investment}%, you're modeling an aggressive renewable-first economy. Massive carbon reduction (+${carbonChange > 0 ? '+' : ''}${carbonChange.toFixed(1)}%), strong job creation (+${jobsChange > 0 ? '+' : ''}${(jobsChange / 1000).toFixed(0)}K jobs), and GDP growth are projected—but this requires unprecedented infrastructure investment and public buy-in. Grid stability depends on storage technology deployment.`;
+  return `At ${investment}%, you're modeling what appears to be an aggressive renewable-first economy. Significant carbon reduction (+${carbonChange > 0 ? '+' : ''}${carbonChange.toFixed(1)}%), strong job creation (+${jobsChange > 0 ? '+' : ''}${(jobsChange / 1000).toFixed(0)}K jobs), and GDP growth are suggested—but this likely requires unprecedented infrastructure investment and public buy-in. Grid stability may depend on storage technology deployment.`;
 }
