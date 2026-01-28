@@ -21,6 +21,7 @@ import { InsightPanel } from '@/components/dashboard/InsightPanel';
 import { TimelineChart } from '@/components/dashboard/TimelineChart';
 import { Disclaimer } from '@/components/dashboard/Disclaimer';
 import { ComparisonMode } from '@/components/dashboard/ComparisonMode';
+import { TradeOffSignal } from '@/components/dashboard/TradeOffSignal';
 import { useSimulationStore } from '@/store/simulationStore';
 
 const Dashboard = () => {
@@ -38,11 +39,10 @@ const Dashboard = () => {
           className="mb-8"
         >
           <h1 className="font-serif text-3xl sm:text-4xl text-foreground mb-3">
-            Renewable Energy Investment Allocation
+            Explore the Real-World Trade-Offs of Complex Decisions
           </h1>
           <p className="text-muted-foreground max-w-2xl mb-2">
-            Adjust the percentage of budget allocated to renewable energy. 
-            Watch how this single decision ripples across environmental, economic, and social dimensions—including visible trade-offs.
+            Adjust renewable energy investment allocation. Watch how this single decision creates competing outcomes across environmental, economic, and social dimensions—before you make it.
           </p>
           <p className="text-sm text-muted-foreground/80 italic max-w-2xl">
             This is a simulation model, not a prediction. The goal is insight, not certainty.
@@ -51,6 +51,9 @@ const Dashboard = () => {
         
         {/* Comparison Mode */}
         <ComparisonMode />
+        
+        {/* Trade-off Signal - Shows when competing outcomes occur */}
+        {!comparisonMode && <TradeOffSignal />}
         
         {/* Main layout: Control + Metrics */}
         {!comparisonMode ? (
