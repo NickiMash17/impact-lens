@@ -1,55 +1,23 @@
 import { motion } from 'framer-motion';
 import { useSimulationStore } from '@/store/simulationStore';
-import { Lightbulb, AlertTriangle, CheckCircle } from 'lucide-react';
-import { useEffect, useMemo } from 'react';
+import { Lightbulb, AlertTriangle, CheckCircle, Sparkles } from 'lucide-react';
+import { useMemo } from 'react';
 
-// Generate insights based on current investment level
-const generateInsight = (investment: number): { text: string; type: 'balanced' | 'caution' | 'positive' } => {
-  if (investment < 20) {
-    return {
-      text: `At ${investment}% renewable investment, you're maintaining status quo economics but missing critical decarbonization windows. Job creation remains modest, and public pressure for climate action will likely intensify. Consider: what's the cost of inaction?`,
-      type: 'caution',
-    };
-  }
-  
-  if (investment < 40) {
-    return {
-      text: `${investment}% investment represents a measured approach. You're seeing initial job growth and carbon reduction, while energy costs remain stable. Grid stability is strong. This is a common "safe" policy position—effective for short-term goals but may require acceleration later.`,
-      type: 'balanced',
-    };
-  }
-  
-  if (investment < 60) {
-    return {
-      text: `At ${investment}%, you've entered the transition zone. Carbon reduction is significant, but energy costs and grid stability face pressure. This is the hardest phase—temporary disruption for long-term gain. Public approval is high, but execution risk is elevated.`,
-      type: 'caution',
-    };
-  }
-  
-  if (investment < 80) {
-    return {
-      text: `${investment}% investment signals serious commitment. Emissions are dropping rapidly, and the job market is transforming. You're past the steepest cost increases, and battery storage investments are improving grid reliability. The economic inflection point is approaching.`,
-      type: 'positive',
-    };
-  }
-  
-  return {
-    text: `At ${investment}%, you're modeling an aggressive renewable-first economy. Massive carbon reduction, strong job creation, and GDP growth are projected—but this requires unprecedented infrastructure investment and public buy-in. Grid stability depends on storage technology deployment.`,
-    type: 'positive',
-  };
-};
+// Determine insight type based on investment level and metrics
+function getInsightType(investment: number): 'balanced' | 'caution' | 'positive' {
+  if (investment < 20) return 'caution';
+  if (investment < 40) return 'balanced';
+  if (investment < 60) return 'caution';
+  return 'positive';
+}
 
 export function InsightPanel() {
-  const { investmentLevel, insight, setInsight } = useSimulationStore();
+  const { investmentLevel, insight, isGeneratingInsight } = useSimulationStore();
   
-  const generatedInsight = useMemo(
-    () => generateInsight(investmentLevel),
+  const insightType = useMemo(
+    () => getInsightType(investmentLevel),
     [investmentLevel]
   );
-  
-  useEffect(() => {
-    setInsight(generatedInsight.text);
-  }, [generatedInsight.text, setInsight]);
   
   const iconMap = {
     balanced: Lightbulb,
@@ -63,7 +31,7 @@ export function InsightPanel() {
     positive: 'text-primary bg-primary/10',
   };
   
-  const Icon = iconMap[generatedInsight.type];
+  const Icon = iconMap[insightType];
   
   return (
     <motion.div
@@ -73,14 +41,28 @@ export function InsightPanel() {
       className="metric-card"
     >
       <div className="flex items-start gap-4">
-        <div className={`p-2.5 rounded-xl ${colorMap[generatedInsight.type]}`}>
-          <Icon className="w-5 h-5" />
+        <div className={`p-2.5 rounded-xl ${colorMap[insightType]}`}>
+          {isGeneratingInsight ? (
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            >
+              <Sparkles className="w-5 h-5" />
+            </motion.div>
+          ) : (
+            <Icon className="w-5 h-5" />
+          )}
         </div>
         
         <div className="flex-1">
-          <h3 className="font-serif text-lg text-foreground mb-2">
-            Impact Analysis
-          </h3>
+          <div className="flex items-center gap-2 mb-2">
+            <h3 className="font-serif text-lg text-foreground">
+              What Changed and Why
+            </h3>
+            {isGeneratingInsight && (
+              <span className="text-xs text-muted-foreground">Generating explanation...</span>
+            )}
+          </div>
           
           <motion.p
             key={insight}
@@ -91,6 +73,13 @@ export function InsightPanel() {
           >
             {insight}
           </motion.p>
+          
+          {/* AI disclosure */}
+          {!isGeneratingInsight && (
+            <p className="text-xs text-muted-foreground/60 mt-3 italic">
+              AI-generated explanation. This helps you understand the trade-offs—it does not recommend a decision.
+            </p>
+          )}
         </div>
       </div>
       

@@ -11,48 +11,7 @@ import {
   Legend,
 } from 'recharts';
 import { useSimulationStore } from '@/store/simulationStore';
-
-// Generate 10-year projection data based on investment level
-const generateProjectionData = (investment: number) => {
-  const years = [];
-  
-  for (let year = 0; year <= 10; year++) {
-    // Growth curves that depend on investment level
-    const investmentFactor = investment / 100;
-    
-    // Carbon reduction: accelerates over time with higher investment
-    const carbonReduction = Math.min(
-      100,
-      (investmentFactor * 8.5) * (1 + year * 0.12 * investmentFactor)
-    );
-    
-    // Jobs: initial surge then stabilization
-    const jobGrowth = 
-      (investment * 1500 - investment * investment * 3) * 
-      (0.3 + year * 0.07) / 50;
-    
-    // Energy cost: transition costs early, savings later
-    const costImpact = investment < 50
-      ? (year < 4 ? 5 + year * 2 * investmentFactor : 12 - (year - 4) * 3 * investmentFactor)
-      : (year < 3 ? 8 + year * 3 * investmentFactor : 15 - (year - 3) * 4 * investmentFactor);
-    
-    // GDP: dip early, growth later
-    const gdpImpact = investment < 30
-      ? -0.5 + year * 0.15 * investmentFactor
-      : -0.8 + year * 0.35 * investmentFactor;
-    
-    years.push({
-      year: 2025 + year,
-      yearLabel: year === 0 ? 'Now' : `${year}y`,
-      carbonReduction: Math.max(0, Math.round(carbonReduction * 10) / 10),
-      jobsCreated: Math.max(0, Math.round(jobGrowth)),
-      energySavings: Math.round(Math.max(-15, Math.min(25, costImpact)) * 10) / 10,
-      gdpGrowth: Math.round(Math.max(-1, Math.min(4, gdpImpact)) * 10) / 10,
-    });
-  }
-  
-  return years;
-};
+import { generateProjection } from '@/lib/simulation';
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
@@ -86,7 +45,7 @@ export function TimelineChart() {
   const { investmentLevel } = useSimulationStore();
   
   const data = useMemo(
-    () => generateProjectionData(investmentLevel),
+    () => generateProjection({ renewableInvestmentPercent: investmentLevel }),
     [investmentLevel]
   );
   

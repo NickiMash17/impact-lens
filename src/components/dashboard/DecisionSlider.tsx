@@ -6,6 +6,10 @@ import { Sun, Factory } from 'lucide-react';
 export function DecisionSlider() {
   const { investmentLevel, setInvestmentLevel } = useSimulationStore();
   
+  const handleValueChange = async (value: number) => {
+    await setInvestmentLevel(value);
+  };
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -15,10 +19,11 @@ export function DecisionSlider() {
     >
       <div className="mb-6">
         <h2 className="font-serif text-xl text-foreground mb-2">
-          Renewable Energy Investment
+          Your Decision Lever
         </h2>
         <p className="text-sm text-muted-foreground">
-          Adjust the percentage of national energy budget allocated to renewable infrastructure
+          Adjust the percentage of national energy budget allocated to renewable infrastructure. 
+          Experiment safely—see what you gain and what you sacrifice.
         </p>
       </div>
       
@@ -38,7 +43,7 @@ export function DecisionSlider() {
           
           <Slider
             value={[investmentLevel]}
-            onValueChange={([value]) => setInvestmentLevel(value)}
+            onValueChange={([value]) => handleValueChange(value)}
             min={0}
             max={100}
             step={1}
@@ -66,7 +71,7 @@ export function DecisionSlider() {
           {[15, 35, 55, 80].map((preset) => (
             <button
               key={preset}
-              onClick={() => setInvestmentLevel(preset)}
+              onClick={() => handleValueChange(preset)}
               className={`flex-1 py-2 px-3 rounded-lg text-sm border transition-all ${
                 investmentLevel === preset
                   ? 'bg-primary/20 border-primary/40 text-foreground'
