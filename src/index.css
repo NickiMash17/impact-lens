@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Impact Lens Design System
+   Premium, editorial, calm aesthetic
+   Deep slate background with warm off-white text and sage accent
+*/
+
+@layer base {
+  :root {
+    /* Core palette - Deep slate with warm undertones */
+    --background: 220 25% 8%;
+    --foreground: 40 20% 92%;
+
+    /* Cards & surfaces - Subtle elevation */
+    --card: 220 20% 12%;
+    --card-foreground: 40 20% 92%;
+
+    --popover: 220 20% 14%;
+    --popover-foreground: 40 20% 92%;
+
+    /* Primary - Sage green, confident but restrained */
+    --primary: 158 35% 42%;
+    --primary-foreground: 40 20% 96%;
+
+    /* Secondary - Muted steel */
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 40 15% 75%;
+
+    /* Muted - For subtle text and backgrounds */
+    --muted: 220 15% 16%;
+    --muted-foreground: 220 10% 55%;
+
+    /* Accent - Warm clay for highlights */
+    --accent: 18 45% 52%;
+    --accent-foreground: 40 20% 96%;
+
+    /* Semantic colors */
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 40 20% 96%;
+
+    /* Metric colors for impact visualization */
+    --metric-positive: 158 45% 45%;
+    --metric-negative: 0 55% 55%;
+    --metric-neutral: 220 10% 50%;
+
+    /* Borders & inputs */
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
+    --ring: 158 35% 42%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar */
+    --sidebar-background: 220 25% 10%;
+    --sidebar-foreground: 40 20% 85%;
+    --sidebar-primary: 158 35% 42%;
+    --sidebar-primary-foreground: 40 20% 96%;
+    --sidebar-accent: 220 15% 16%;
+    --sidebar-accent-foreground: 40 20% 85%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 158 35% 42%;
+
+    /* Typography */
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
+
+    /* Custom gradients */
+    --gradient-subtle: linear-gradient(135deg, hsl(220 25% 8%) 0%, hsl(220 20% 12%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(220 20% 14%) 0%, hsl(220 20% 10%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(158 35% 42%) 0%, hsl(158 40% 35%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(220 30% 5% / 0.5);
+    --shadow-glow: 0 0 40px -10px hsl(158 35% 42% / 0.2);
+  }
+
+  .dark {
+    /* Same as root - this is a dark-first design */
+    --background: 220 25% 8%;
+    --foreground: 40 20% 92%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(40 20% 92%) 0%, hsl(40 15% 70%) 100%);
+  }
+
+  .text-gradient-accent {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(158 35% 55%) 0%, hsl(158 40% 40%) 100%);
+  }
+
+  .glass-card {
+    @apply rounded-xl border border-border/50;
+    background: linear-gradient(180deg, hsl(220 20% 14% / 0.8) 0%, hsl(220 20% 10% / 0.6) 100%);
+    backdrop-filter: blur(12px);
+  }
+
+  .metric-card {
+    @apply rounded-xl border border-border/40 p-6;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .glow-accent {
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulseSoft 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes pulseSoft {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+}
