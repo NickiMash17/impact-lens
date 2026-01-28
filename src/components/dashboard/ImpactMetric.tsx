@@ -60,20 +60,27 @@ export function ImpactMetric({
       layout
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
+      whileHover={{ scale: 1.02, y: -2 }}
       transition={{ duration: 0.3 }}
-      className="metric-card group relative overflow-hidden"
+      className="metric-card group relative overflow-hidden cursor-pointer"
     >
       {/* Subtle gradient overlay on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+      <motion.div 
+        className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+      />
       
       <div className="relative">
         {/* Header */}
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-2">
-            <div className="p-2 rounded-lg bg-secondary">
-              <Icon className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <span className="text-sm text-muted-foreground">{label}</span>
+            <motion.div 
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+              className="p-2 rounded-lg bg-secondary group-hover:bg-primary/10 transition-colors duration-300"
+            >
+              <Icon className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
+            </motion.div>
+            <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">{label}</span>
           </div>
           
           {/* Change indicator */}

@@ -55,11 +55,12 @@ export function DecisionSlider() {
             className="absolute -bottom-1 text-center"
             style={{ left: `${investmentLevel}%`, transform: 'translateX(-50%)' }}
             key={investmentLevel}
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.15 }}
+            initial={{ scale: 1.2, y: -5 }}
+            animate={{ scale: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            whileHover={{ scale: 1.1 }}
           >
-            <div className="inline-flex items-baseline gap-1 bg-card border border-border rounded-lg px-3 py-1.5">
+            <div className="inline-flex items-baseline gap-1 bg-card border border-border rounded-lg px-3 py-1.5 shadow-lg hover:shadow-xl hover:border-primary/40 transition-all duration-300">
               <span className="font-serif text-2xl text-foreground">{investmentLevel}</span>
               <span className="text-sm text-muted-foreground">%</span>
             </div>
@@ -69,17 +70,20 @@ export function DecisionSlider() {
         {/* Quick presets */}
         <div className="flex gap-2 pt-4">
           {[15, 35, 55, 80].map((preset) => (
-            <button
+            <motion.button
               key={preset}
               onClick={() => handleValueChange(preset)}
-              className={`flex-1 py-2 px-3 rounded-lg text-sm border transition-all ${
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className={`flex-1 py-2 px-3 rounded-lg text-sm border transition-all duration-300 ${
                 investmentLevel === preset
-                  ? 'bg-primary/20 border-primary/40 text-foreground'
-                  : 'border-border/40 text-muted-foreground hover:border-border hover:text-foreground'
+                  ? 'bg-primary/20 border-primary/40 text-foreground shadow-md'
+                  : 'border-border/40 text-muted-foreground hover:border-border hover:text-foreground hover:bg-card/50 hover:shadow-sm'
               }`}
             >
               {preset}%
-            </button>
+            </motion.button>
           ))}
         </div>
       </div>

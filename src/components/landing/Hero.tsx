@@ -1,28 +1,51 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { useRef } from 'react';
 
 export function Hero() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"]
+  });
+  
+  // Parallax transforms
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Subtle gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-card/30" />
+    <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Subtle gradient background - parallax */}
+      <motion.div 
+        style={{ y: y1 }}
+        className="absolute inset-0 bg-gradient-to-b from-background via-background to-card/30" 
+      />
       
-      {/* Subtle grid pattern */}
-      <div 
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
+      {/* Subtle grid pattern - parallax */}
+      <motion.div 
+        style={{ 
+          y: y2,
           backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
                            linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
           backgroundSize: '60px 60px',
         }}
+        className="absolute inset-0 opacity-[0.03]"
       />
       
-      {/* Accent glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full" />
+      {/* Accent glow - parallax */}
+      <motion.div 
+        style={{ y: y3 }}
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full" 
+      />
       
-      <div className="relative z-10 container mx-auto px-6 py-20">
+      <motion.div 
+        style={{ opacity }}
+        className="relative z-10 container mx-auto px-6 py-20"
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -68,10 +91,10 @@ export function Hero() {
             <Link to="/dashboard">
               <Button 
                 size="lg" 
-                className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl glow-accent"
+                className="group text-base px-8 py-6 bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl glow-accent hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20"
               >
                 Explore the Dashboard
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
             </Link>
             <p className="text-sm text-muted-foreground">
@@ -114,7 +137,7 @@ export function Hero() {
           {/* Reflection effect */}
           <div className="h-32 bg-gradient-to-b from-card/20 to-transparent rounded-b-2xl -mt-1 blur-sm" />
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }
