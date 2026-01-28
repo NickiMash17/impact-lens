@@ -21,25 +21,75 @@ Most tools either:
 
 **Impact Lens lets someone experiment safely with a decision before committing. No risk. No overconfidence. No fake certainty.**
 
-## Why Impact Lens is Different
+## Core Features
 
-### 1. **One Decision, Multiple Dimensions**
-Adjust a single lever (e.g., renewable energy investment percentage) and see impacts across:
+> **Impact Lens enables real-time, trade-off-aware simulation of complex decisions by visualizing their social, economic, and environmental consequences over time, supported by AI-generated explanations that clarify why outcomes change.**
+
+### 1. **Single-Decision Scenario Simulation**
+Users explore the consequences of **one focused decision variable** at a time (e.g., renewable energy investment level), eliminating noise and forcing clarity. Encourages deliberate thinking instead of trial-and-error optimization.
+
+### 2. **Trade-Off-Aware Impact Modeling**
+Each decision produces **competing outcomes** across multiple dimensions:
 - 🌍 **Environmental**: Carbon reduction, resource usage
 - 💰 **Economic**: GDP impact, energy costs, ROI
 - 👥 **Social**: Jobs created, public approval, access
+- ⚡ **Infrastructure**: Grid stability, reliability
 
-### 2. **Visible Trade-offs**
-Unlike tools that show "everything goes up," Impact Lens reveals the honest truth: some metrics improve while others degrade. This is the reality of complex decisions.
+Some metrics improve while others degrade. Reflects real-world complexity instead of presenting false "win-win" outcomes.
 
-### 3. **Immediate Feedback**
-No waiting for complex models to run. Adjust the slider and watch metrics animate to new values in real time.
+### 3. **Real-Time Impact Recalculation**
+All impacts update instantly as the decision input changes, allowing users to see **cause-and-effect** relationships in motion. Transforms static data into an interactive decision experience.
 
-### 4. **AI-Powered Context**
-AI generates concise explanations of what changed and why—not as the main feature, but as a supporting narrator. The AI does **not decide**—it **explains**.
+### 4. **Multi-Dimensional Impact Dashboard**
+Outcomes are visualized simultaneously using:
+- Key metrics with comparative indicators
+- Minimal, readable charts
+- Clear visual hierarchy
 
-### 5. **Transparency & Honesty**
-This is a simulation model, not reality. Clear disclaimers, no overclaiming. The output is **insight**, not an answer. Built with the restraint and clarity of a policy lab—serious, approachable, confident.
+Prevents siloed thinking and highlights interdependencies.
+
+### 5. **Time-Horizon Impact Projection**
+A forward-looking trajectory (10 years) shows:
+- Short-term transition costs
+- Medium-term instability
+- Long-term stabilization or gains
+
+Helps users weigh immediate pain against long-term benefit.
+
+### 6. **AI-Generated Impact Insight**
+A short, contextual explanation translates numeric changes into plain language, highlighting:
+- What changed
+- Why it changed
+- Where trade-offs exist
+
+Improves accessibility and supports informed discussion without automating decisions.
+
+### 7. **Transparent Simulation Boundaries**
+Clear messaging communicates that:
+- This is a simulation, not a prediction
+- Values are modeled approximations
+- Results illustrate relationships, not certainty
+
+Builds trust and avoids misleading overconfidence.
+
+### 8. **Calm, Decision-Focused UX**
+A single-screen, distraction-free interface designed to:
+- Encourage reflection
+- Reduce cognitive overload
+- Emphasize understanding over action
+
+Positions the product as a serious decision tool, not a gimmick.
+
+### 9. **Interpretability-First Visualization**
+Charts and metrics are designed to answer: **"What changed because of my decision?"** Not: **"How much data can we show?"** Ensures every visual element contributes to insight.
+
+### 10. **Stakeholder-Ready Explanation Layer**
+The system supports:
+- Policy discussion
+- Executive briefings
+- Educational use
+
+By making trade-offs visible and explainable. Extends usefulness beyond the individual user to teams and organizations.
 
 ## Architecture
 
