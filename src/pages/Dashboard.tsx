@@ -12,18 +12,21 @@ const Dashboard = () => {
       <ScenarioHeader />
       
       <main className="container mx-auto px-6 py-8">
-        {/* Scenario intro */}
+        {/* Scenario intro - Core interaction explanation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-8"
         >
           <h1 className="font-serif text-3xl sm:text-4xl text-foreground mb-3">
-            National Energy Transition Scenario
+            Renewable Energy Investment Allocation
           </h1>
-          <p className="text-muted-foreground max-w-2xl">
-            Explore how shifting investment from fossil fuels to renewable energy 
-            affects employment, emissions, costs, and public sentiment over a 10-year horizon.
+          <p className="text-muted-foreground max-w-2xl mb-2">
+            Adjust the percentage of budget allocated to renewable energy. 
+            Watch how this single decision ripples across environmental, economic, and social dimensions—including visible trade-offs.
+          </p>
+          <p className="text-sm text-muted-foreground/80 italic max-w-2xl">
+            This is a simulation model, not a prediction. The goal is insight, not certainty.
           </p>
         </motion.div>
         

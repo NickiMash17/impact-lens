@@ -4,18 +4,18 @@ import { TrendingUp, Shield, Zap } from 'lucide-react';
 const features = [
   {
     icon: TrendingUp,
-    title: 'Trade-off Visibility',
-    description: 'Every decision has consequences. See what improves and what degrades, side by side.',
+    title: 'Visible Trade-offs',
+    description: 'Every decision has consequences. See what improves and what degrades, side by side—no hidden costs.',
   },
   {
     icon: Zap,
-    title: 'Instant Feedback',
-    description: 'Adjust a single lever and watch metrics update in real time. No waiting, no guessing.',
+    title: 'Safe Experimentation',
+    description: 'Adjust a single lever and watch impacts unfold in real time. Explore scenarios without risk.',
   },
   {
     icon: Shield,
-    title: 'Informed Confidence',
-    description: 'Move from intuition to insight. Understand the why behind every projected outcome.',
+    title: 'Transparent Insight',
+    description: 'Understand the why behind every outcome. The goal is insight, not certainty—helping you think, not telling you what to do.',
   },
 ];
 
@@ -31,10 +31,10 @@ export function Features() {
           className="text-center mb-16"
         >
           <h2 className="font-serif text-3xl sm:text-4xl text-foreground mb-4">
-            Decision clarity, not complexity
+            Explore consequences, not answers
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            One interface. One interaction. Complete understanding.
+            One decision lever. Multiple dimensions. Clear trade-offs. No overconfidence.
           </p>
         </motion.div>
         
