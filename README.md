@@ -101,14 +101,20 @@ By making trade-offs visible and explainable. Extends usefulness beyond the indi
 
 ### Technical Stack
 
+**Frontend:**
 - **React 18 + TypeScript** - Type-safe UI
 - **Vite** - Fast build tool and dev server
 - **Zustand** - Minimal state management
-- **Pure Simulation Engine** - Deterministic, explainable calculations
-- **OpenAI API** - Contextual insight generation (with fallback)
+- **Pure Simulation Engine** - Deterministic, explainable calculations (client-side)
 - **Recharts** - Data visualization
 - **Framer Motion** - Purposeful animations
 - **Radix UI + Tailwind CSS** - Editorial-quality design system
+
+**Backend:**
+- **Serverless Functions** - Minimal backend for AI explanation generation
+- **OpenAI API** - Contextual insight generation (with fallback)
+
+**Architecture:** Lightweight full-stack application. Core simulation logic runs client-side for transparency and immediate feedback. Backend exists solely for secure AI integration. See [ARCHITECTURE.md](./ARCHITECTURE.md) for details.
 
 ### Key Architectural Decisions
 

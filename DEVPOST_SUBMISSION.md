@@ -58,21 +58,32 @@ Impact Lens is a **decision trade-off simulator** that helps users explore the r
 
 ### How We Built It
 
+**Architecture:**
+Impact Lens is a **lightweight full-stack application**. The core simulation logic runs client-side for transparency and immediate feedback. The backend is intentionally minimal—it exists solely to securely handle AI explanation generation.
+
 **Tech Stack:**
+
+**Frontend:**
 - React 18 + TypeScript
 - Vite
 - Zustand (state management)
-- Pure Simulation Engine (deterministic, explainable)
-- OpenAI API (insight generation with fallback)
+- Pure Simulation Engine (deterministic, explainable, client-side)
 - Recharts (visualization)
 - Framer Motion (animations)
 - Radix UI + Tailwind CSS
 
-**Architecture:**
-- Pure simulation layer with deterministic functions
-- Single source of truth (Zustand)
-- AI as supporting narrator, not decision-maker
-- Clean separation of concerns
+**Backend:**
+- Serverless Functions (Vercel/Netlify)
+- OpenAI API (insight generation with fallback)
+
+**Key Architectural Decisions:**
+- **Frontend-first simulation**: Logic is transparent and explainable
+- **Minimal backend**: Exists only for API key security and AI integration
+- **No unnecessary complexity**: No databases, auth, or persistence layers
+- **Pure functions**: Simulation is deterministic and stateless
+- **Resilient**: Works perfectly without backend or AI (fallbacks at every layer)
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for complete architecture documentation.
 
 ---
 
