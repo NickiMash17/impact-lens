@@ -1,0 +1,18 @@
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+/**
+ * Smooth scroll behavior for page navigation
+ */
+export function SmoothScroll() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, [pathname]);
+
+  return null;
+}
