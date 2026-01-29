@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
-
 /* Impact Lens Design System
    Premium, editorial, calm aesthetic
    Deep slate background with warm off-white text and sage accent
@@ -65,8 +63,8 @@
     --sidebar-ring: 158 35% 42%;
 
     /* Typography */
-    --font-serif: 'Instrument Serif', Georgia, serif;
-    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-serif: Georgia, serif;
+    --font-sans: system-ui, -apple-system, sans-serif;
 
     /* Custom gradients */
     --gradient-subtle: linear-gradient(135deg, hsl(220 25% 8%) 0%, hsl(220 20% 12%) 100%);
@@ -76,6 +74,69 @@
     /* Shadows */
     --shadow-soft: 0 4px 20px -4px hsl(220 30% 5% / 0.5);
     --shadow-glow: 0 0 40px -10px hsl(158 35% 42% / 0.2);
+  }
+
+  /* Light mode theme */
+  .light {
+    /* Core palette - Warm, soft light background */
+    --background: 40 20% 98%;
+    --foreground: 220 25% 12%;
+
+    /* Cards & surfaces - Subtle elevation */
+    --card: 40 15% 96%;
+    --card-foreground: 220 25% 12%;
+
+    --popover: 40 15% 98%;
+    --popover-foreground: 220 25% 12%;
+
+    /* Primary - Sage green, slightly brighter for light mode */
+    --primary: 158 40% 35%;
+    --primary-foreground: 40 20% 98%;
+
+    /* Secondary - Light steel */
+    --secondary: 220 10% 85%;
+    --secondary-foreground: 220 25% 12%;
+
+    /* Muted - For subtle text and backgrounds */
+    --muted: 220 10% 90%;
+    --muted-foreground: 220 15% 40%;
+
+    /* Accent - Warm clay for highlights */
+    --accent: 18 50% 45%;
+    --accent-foreground: 40 20% 98%;
+
+    /* Semantic colors */
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 40 20% 98%;
+
+    /* Metric colors for impact visualization */
+    --metric-positive: 158 50% 35%;
+    --metric-negative: 0 60% 50%;
+    --metric-neutral: 220 15% 45%;
+
+    /* Borders & inputs */
+    --border: 220 15% 80%;
+    --input: 220 10% 88%;
+    --ring: 158 40% 35%;
+
+    /* Sidebar */
+    --sidebar-background: 40 15% 95%;
+    --sidebar-foreground: 220 25% 12%;
+    --sidebar-primary: 158 40% 35%;
+    --sidebar-primary-foreground: 40 20% 98%;
+    --sidebar-accent: 220 10% 88%;
+    --sidebar-accent-foreground: 220 25% 12%;
+    --sidebar-border: 220 15% 85%;
+    --sidebar-ring: 158 40% 35%;
+
+    /* Custom gradients for light mode */
+    --gradient-subtle: linear-gradient(135deg, hsl(40 20% 98%) 0%, hsl(40 15% 96%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(40 15% 97%) 0%, hsl(40 15% 95%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(158 40% 35%) 0%, hsl(158 45% 30%) 100%);
+
+    /* Shadows for light mode */
+    --shadow-soft: 0 4px 20px -4px hsl(220 30% 20% / 0.1);
+    --shadow-glow: 0 0 40px -10px hsl(158 40% 35% / 0.15);
   }
 
   .dark {
@@ -97,11 +158,48 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-sans);
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(var(--accent) / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, hsl(var(--primary) / 0.02) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(var(--accent) / 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, hsl(var(--primary) / 0.03) 0%, transparent 50%);
+  }
+
+  .light body {
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(var(--primary) / 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(var(--accent) / 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, hsl(var(--primary) / 0.05) 0%, transparent 50%);
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-serif);
     letter-spacing: -0.01em;
+  }
+
+  /* Focus styles for keyboard navigation */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Better touch targets on mobile */
+  @media (max-width: 640px) {
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
 }
 
@@ -111,15 +209,27 @@
     background-image: linear-gradient(135deg, hsl(40 20% 92%) 0%, hsl(40 15% 70%) 100%);
   }
 
+  .light .text-gradient {
+    background-image: linear-gradient(135deg, hsl(220 25% 12%) 0%, hsl(220 20% 30%) 100%);
+  }
+
   .text-gradient-accent {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, hsl(158 35% 55%) 0%, hsl(158 40% 40%) 100%);
+  }
+
+  .light .text-gradient-accent {
+    background-image: linear-gradient(135deg, hsl(158 40% 35%) 0%, hsl(158 45% 28%) 100%);
   }
 
   .glass-card {
     @apply rounded-xl border border-border/50;
     background: linear-gradient(180deg, hsl(220 20% 14% / 0.8) 0%, hsl(220 20% 10% / 0.6) 100%);
     backdrop-filter: blur(12px);
+  }
+
+  .light .glass-card {
+    background: linear-gradient(180deg, hsl(40 15% 97% / 0.9) 0%, hsl(40 15% 95% / 0.8) 100%);
   }
 
   .metric-card {
