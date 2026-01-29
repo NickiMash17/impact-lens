@@ -1,0 +1,17 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="hsl(220, 25%, 8%)"/>
+  
+  <!-- Layered impact rings - representing ripple effects of decisions -->
+  <circle cx="16" cy="16" r="11" fill="none" stroke="hsl(158, 35%, 42%)" stroke-width="1.5" opacity="0.4"/>
+  <circle cx="16" cy="16" r="8" fill="none" stroke="hsl(158, 35%, 42%)" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="16" cy="16" r="5" fill="none" stroke="hsl(158, 35%, 42%)" stroke-width="1.5" opacity="0.8"/>
+  
+  <!-- Center layers icon - representing decision layers -->
+  <path d="M16 10L20 12.5L16 15L12 12.5L16 10Z" fill="hsl(158, 35%, 42%)" opacity="0.9"/>
+  <path d="M16 15L20 17.5L16 20L12 17.5L16 15Z" fill="hsl(158, 35%, 42%)" opacity="0.7"/>
+  <path d="M16 20L20 22.5L16 25L12 22.5L16 20Z" fill="hsl(158, 35%, 42%)" opacity="0.5"/>
+  
+  <!-- Center dot - decision point -->
+  <circle cx="16" cy="16" r="1.5" fill="hsl(40, 20%, 92%)"/>
+</svg>
