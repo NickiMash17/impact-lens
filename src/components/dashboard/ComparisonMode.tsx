@@ -313,17 +313,30 @@ export function ComparisonMode() {
           animate={{ opacity: 1 }}
           className="metric-card bg-muted/30 border-dashed"
         >
-          <p className="text-sm text-muted-foreground text-center">
-            {!scenarioA && !scenarioB && (
-              <>Adjust the slider above, then lock Scenario A and Scenario B to compare them side-by-side.</>
-            )}
-            {scenarioA && !scenarioB && (
-              <>Scenario A is locked. Adjust the slider and lock Scenario B to see the comparison.</>
-            )}
-            {!scenarioA && scenarioB && (
-              <>Scenario B is locked. Adjust the slider and lock Scenario A to see the comparison.</>
-            )}
-          </p>
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground text-center font-medium">
+              {!scenarioA && !scenarioB && (
+                <>📊 How to compare scenarios:</>
+              )}
+              {scenarioA && !scenarioB && (
+                <>✅ Scenario A locked. Next step:</>
+              )}
+              {!scenarioA && scenarioB && (
+                <>✅ Scenario B locked. Next step:</>
+              )}
+            </p>
+            <p className="text-sm text-muted-foreground text-center">
+              {!scenarioA && !scenarioB && (
+                <>1. Adjust the slider to your first scenario<br />2. Click "Lock Scenario A"<br />3. Adjust the slider to your second scenario<br />4. Click "Lock Scenario B" to see the comparison</>
+              )}
+              {scenarioA && !scenarioB && (
+                <>Adjust the slider to a different investment level, then click "Lock Scenario B" to compare.</>
+              )}
+              {!scenarioA && scenarioB && (
+                <>Adjust the slider to a different investment level, then click "Lock Scenario A" to compare.</>
+              )}
+            </p>
+          </div>
         </motion.div>
       )}
     </motion.div>

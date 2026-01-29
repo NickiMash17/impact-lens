@@ -57,12 +57,19 @@ export function TimelineChart() {
       className="metric-card"
     >
       <div className="mb-6">
-        <h3 className="font-serif text-xl text-foreground mb-2">
-          10-Year Impact Trajectory
-        </h3>
-        <p className="text-sm text-muted-foreground">
-          Projected outcomes based on {investmentLevel}% renewable investment
-        </p>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <h3 className="font-serif text-xl text-foreground mb-2">
+              10-Year Impact Trajectory
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              Projected outcomes based on {investmentLevel}% renewable investment
+            </p>
+            <p className="text-xs text-muted-foreground/70 mt-1">
+              Hover over the chart to see detailed values for each year
+            </p>
+          </div>
+        </div>
       </div>
       
       <div className="h-[300px] w-full">
@@ -127,8 +134,10 @@ export function TimelineChart() {
               stroke="hsl(158, 45%, 45%)"
               strokeWidth={2}
               fill="url(#carbonGradient)"
-              animationDuration={800}
+              animationDuration={1000}
               animationEasing="ease-out"
+              dot={false}
+              activeDot={{ r: 4, fill: 'hsl(158, 45%, 45%)' }}
             />
             
             <Area
@@ -138,8 +147,10 @@ export function TimelineChart() {
               stroke="hsl(220, 70%, 55%)"
               strokeWidth={2}
               fill="url(#jobsGradient)"
-              animationDuration={800}
+              animationDuration={1000}
               animationEasing="ease-out"
+              dot={false}
+              activeDot={{ r: 4, fill: 'hsl(220, 70%, 55%)' }}
             />
             
             <Area
@@ -149,8 +160,10 @@ export function TimelineChart() {
               stroke="hsl(18, 45%, 52%)"
               strokeWidth={2}
               fill="url(#gdpGradient)"
-              animationDuration={800}
+              animationDuration={1000}
               animationEasing="ease-out"
+              dot={false}
+              activeDot={{ r: 4, fill: 'hsl(18, 45%, 52%)' }}
             />
           </AreaChart>
         </ResponsiveContainer>

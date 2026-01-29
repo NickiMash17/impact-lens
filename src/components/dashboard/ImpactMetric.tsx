@@ -1,6 +1,7 @@
 import { motion, useSpring, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
 import { LucideIcon, TrendingUp, TrendingDown, Minus } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface ImpactMetricProps {
   label: string;
@@ -56,14 +57,16 @@ export function ImpactMetric({
   const isNeutral = Math.abs(changePercent) < 0.5;
   
   return (
-    <motion.div
-      layout
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{ opacity: 1, scale: 1 }}
-      whileHover={{ scale: 1.02, y: -2 }}
-      transition={{ duration: 0.3 }}
-      className="metric-card group relative overflow-hidden cursor-pointer"
-    >
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <motion.div
+          layout
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          whileHover={{ scale: 1.02, y: -2 }}
+          transition={{ duration: 0.3 }}
+          className="metric-card group relative overflow-hidden cursor-pointer"
+        >
       {/* Subtle gradient overlay on hover */}
       <motion.div 
         className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
@@ -124,6 +127,19 @@ export function ImpactMetric({
           {description}
         </p>
       </div>
-    </motion.div>
+        </motion.div>
+      </TooltipTrigger>
+      <TooltipContent side="top" className="max-w-xs">
+        <div className="space-y-1">
+          <p className="font-medium text-xs">{label}</p>
+          <p className="text-xs text-muted-foreground">{description}</p>
+          {inverseColor && (
+            <p className="text-xs text-muted-foreground/80 italic mt-1">
+              Note: Lower values are better for this metric.
+            </p>
+          )}
+        </div>
+      </TooltipContent>
+    </Tooltip>
   );
 }

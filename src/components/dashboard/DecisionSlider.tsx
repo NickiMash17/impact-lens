@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import { Slider } from '@/components/ui/slider';
 import { useSimulationStore } from '@/store/simulationStore';
-import { Sun, Factory } from 'lucide-react';
+import { Sun, Factory, Info } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 export function DecisionSlider() {
   const { investmentLevel, setInvestmentLevel } = useSimulationStore();
@@ -18,12 +19,30 @@ export function DecisionSlider() {
       className="metric-card"
     >
       <div className="mb-6">
-        <h2 className="font-serif text-xl text-foreground mb-2">
-          Your Decision Lever
-        </h2>
-        <p className="text-sm text-muted-foreground">
+        <div className="flex items-center gap-2 mb-2">
+          <h2 className="font-serif text-xl text-foreground">
+            Your Decision Lever
+          </h2>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button className="text-muted-foreground hover:text-foreground transition-colors">
+                <Info className="w-4 h-4" />
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="right" className="max-w-xs">
+              <p className="text-xs">
+                This slider controls one decision variable: renewable energy investment percentage. 
+                Adjust it to see how this single change affects multiple dimensions simultaneously.
+              </p>
+            </TooltipContent>
+          </Tooltip>
+        </div>
+        <p className="text-sm text-muted-foreground mb-2">
           Adjust the percentage of national energy budget allocated to renewable infrastructure. 
           Experiment safely—see what you gain and what you sacrifice.
+        </p>
+        <p className="text-xs text-muted-foreground/70">
+          💡 Tip: Use arrow keys or number keys (1-4) for quick adjustments
         </p>
       </div>
       
@@ -48,6 +67,10 @@ export function DecisionSlider() {
             max={100}
             step={1}
             className="cursor-pointer"
+            aria-label="Renewable energy investment percentage"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={investmentLevel}
           />
           
           {/* Value indicator */}
@@ -68,23 +91,37 @@ export function DecisionSlider() {
         </div>
         
         {/* Quick presets */}
-        <div className="flex gap-2 pt-4">
-          {[15, 35, 55, 80].map((preset) => (
-            <motion.button
-              key={preset}
-              onClick={() => handleValueChange(preset)}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              className={`flex-1 py-2 px-3 rounded-lg text-sm border transition-all duration-300 ${
-                investmentLevel === preset
-                  ? 'bg-primary/20 border-primary/40 text-foreground shadow-md'
-                  : 'border-border/40 text-muted-foreground hover:border-border hover:text-foreground hover:bg-card/50 hover:shadow-sm'
-              }`}
-            >
-              {preset}%
-            </motion.button>
-          ))}
+        <div className="pt-4">
+          <p className="text-xs text-muted-foreground mb-2">Quick presets:</p>
+          <div className="flex gap-2">
+            {[15, 35, 55, 80].map((preset) => (
+              <Tooltip key={preset}>
+                <TooltipTrigger asChild>
+                  <motion.button
+                    onClick={() => handleValueChange(preset)}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                    className={`flex-1 py-2 px-3 rounded-lg text-sm border transition-all duration-300 ${
+                      investmentLevel === preset
+                        ? 'bg-primary/20 border-primary/40 text-foreground shadow-md'
+                        : 'border-border/40 text-muted-foreground hover:border-border hover:text-foreground hover:bg-card/50 hover:shadow-sm'
+                    }`}
+                  >
+                    {preset}%
+                  </motion.button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="text-xs">
+                    {preset === 15 && 'Conservative approach'}
+                    {preset === 35 && 'Moderate transition'}
+                    {preset === 55 && 'Accelerated shift'}
+                    {preset === 80 && 'Aggressive transformation'}
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>
