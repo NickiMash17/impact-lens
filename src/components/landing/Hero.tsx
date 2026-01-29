@@ -71,7 +71,7 @@ export function Hero() {
               boxShadow: '0 0 30px hsl(var(--primary) / 0.2)',
               borderColor: 'hsl(var(--primary) / 0.5)'
             }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/60 bg-card/50 backdrop-blur-sm mb-8 cursor-default transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border/60 bg-card/80 dark:bg-card/50 backdrop-blur-sm mb-8 cursor-default transition-colors"
           >
             <motion.div
               animate={{ rotate: [0, 360] }}
@@ -79,7 +79,7 @@ export function Hero() {
             >
               <Layers className="w-4 h-4 text-primary" />
             </motion.div>
-            <span className="text-sm text-muted-foreground">Decision Intelligence Platform</span>
+            <span className="text-sm text-muted-foreground">Decision Trade-Off Simulator</span>
           </motion.div>
           
           {/* Main headline with staggered letter animation */}
@@ -168,14 +168,14 @@ export function Hero() {
           className="mt-20 max-w-5xl mx-auto"
         >
           <motion.div 
-            className="relative rounded-2xl border border-border/40 bg-card/30 backdrop-blur-sm p-1 shadow-2xl"
+            className="relative rounded-2xl border border-border/40 bg-card/50 dark:bg-card/30 backdrop-blur-sm p-1 shadow-2xl"
             whileHover={{ 
               borderColor: 'hsl(var(--primary) / 0.3)',
               boxShadow: '0 25px 50px -12px hsl(var(--primary) / 0.15)'
             }}
             transition={{ duration: 0.3 }}
           >
-            <div className="rounded-xl bg-gradient-to-b from-card to-background p-8 sm:p-12">
+            <div className="rounded-xl bg-gradient-to-b from-card/90 dark:from-card to-background p-8 sm:p-12">
               <div className="grid grid-cols-3 gap-6 sm:gap-8">
                 {metrics.map((metric, i) => (
                   <AnimatedMetric
@@ -191,7 +191,7 @@ export function Hero() {
           </motion.div>
           
           {/* Reflection effect */}
-          <div className="h-32 bg-gradient-to-b from-card/20 to-transparent rounded-b-2xl -mt-1 blur-sm" />
+          <div className="h-32 bg-gradient-to-b from-card/40 dark:from-card/20 to-transparent rounded-b-2xl -mt-1 blur-sm" />
         </motion.div>
       </motion.div>
     </section>
