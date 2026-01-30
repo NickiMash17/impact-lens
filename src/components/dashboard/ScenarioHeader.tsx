@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Layers, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 export function ScenarioHeader() {
   return (
@@ -47,6 +48,9 @@ export function ScenarioHeader() {
               </motion.div>
               <span className="text-sm font-medium text-primary">Energy Transition</span>
             </motion.div>
+            
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </motion.div>
         </div>
       </div>

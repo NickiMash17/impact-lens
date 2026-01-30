@@ -25,6 +25,7 @@ import { TradeOffSignal } from '@/components/dashboard/TradeOffSignal';
 import { AnimatedSection } from '@/components/dashboard/AnimatedSection';
 import { BackgroundParticles } from '@/components/dashboard/BackgroundParticles';
 import { EnhancedBackground } from '@/components/dashboard/EnhancedBackground';
+import { PatternBackground } from '@/components/dashboard/PatternBackground';
 import { QuickGuide } from '@/components/dashboard/QuickGuide';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { KeyboardShortcuts } from '@/components/dashboard/KeyboardShortcuts';
@@ -37,10 +38,8 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-background relative">
       <EnhancedBackground />
+      <PatternBackground />
       <BackgroundParticles />
-      <div className="fixed top-6 right-6 z-30">
-        <ThemeToggle />
-      </div>
       <ScenarioHeader />
       
       <main className="container mx-auto px-6 py-8">
