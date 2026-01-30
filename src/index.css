@@ -236,6 +236,31 @@
     @apply rounded-xl border border-border/40 p-6;
     background: var(--gradient-card);
     box-shadow: var(--shadow-soft);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.3), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .metric-card:hover {
+    @apply border-border/60;
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+  }
+
+  .metric-card:hover::before {
+    opacity: 1;
   }
 
   .glow-accent {
