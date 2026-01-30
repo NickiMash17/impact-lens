@@ -18,9 +18,9 @@ export function DecisionSlider() {
       transition={{ delay: 0.2, duration: 0.5 }}
       className="metric-card"
     >
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <div className="flex items-center gap-2 mb-2">
-          <h2 className="font-serif text-xl text-foreground">
+          <h2 className="font-serif text-lg sm:text-xl text-foreground">
             Your Decision Lever
           </h2>
           <Tooltip>
@@ -37,11 +37,11 @@ export function DecisionSlider() {
             </TooltipContent>
           </Tooltip>
         </div>
-        <p className="text-sm text-muted-foreground mb-2">
+        <p className="text-xs sm:text-sm text-muted-foreground mb-2">
           Adjust the percentage of national energy budget allocated to renewable infrastructure. 
           Experiment safely—see what you gain and what you sacrifice.
         </p>
-        <p className="text-xs text-muted-foreground/70">
+        <p className="text-xs text-muted-foreground/70 hidden sm:block">
           💡 Tip: Use arrow keys or number keys (1-4) for quick adjustments
         </p>
       </div>
@@ -83,9 +83,9 @@ export function DecisionSlider() {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             whileHover={{ scale: 1.1 }}
           >
-            <div className="inline-flex items-baseline gap-1 bg-gradient-to-br from-card to-card/80 border border-primary/30 rounded-lg px-4 py-2 shadow-xl hover:shadow-2xl hover:border-primary/50 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+            <div className="inline-flex items-baseline gap-1 bg-gradient-to-br from-card to-card/80 border border-primary/30 rounded-lg px-3 sm:px-4 py-1.5 sm:py-2 shadow-xl hover:shadow-2xl hover:border-primary/50 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
               <motion.span 
-                className="font-serif text-2xl text-foreground font-semibold"
+                className="font-serif text-xl sm:text-2xl text-foreground font-semibold"
                 key={investmentLevel}
                 initial={{ scale: 1.2, color: 'hsl(var(--primary))' }}
                 animate={{ scale: 1, color: 'hsl(var(--foreground))' }}
@@ -101,7 +101,7 @@ export function DecisionSlider() {
         {/* Quick presets */}
         <div className="pt-4">
           <p className="text-xs text-muted-foreground mb-2">Quick presets:</p>
-          <div className="flex gap-2">
+          <div className="grid grid-cols-4 gap-2 sm:flex sm:gap-2">
             {[15, 35, 55, 80].map((preset) => (
               <Tooltip key={preset}>
                 <TooltipTrigger asChild>

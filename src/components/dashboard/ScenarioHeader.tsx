@@ -11,17 +11,17 @@ export function ScenarioHeader() {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="border-b border-border/40 bg-background/80 backdrop-blur-sm sticky top-0 z-50"
     >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 group">
+      <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
+        <div className="flex items-center justify-between gap-2">
+          <Link to="/" className="flex items-center gap-2 group flex-shrink-0">
             <motion.div
               whileHover={{ rotate: 180, scale: 1.1 }}
               transition={{ duration: 0.4, type: "spring" }}
             >
-              <Layers className="w-5 h-5 text-primary" />
+              <Layers className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </motion.div>
             <motion.span
-              className="font-serif text-lg"
+              className="font-serif text-base sm:text-lg"
               whileHover={{ color: 'hsl(var(--primary))' }}
               transition={{ duration: 0.2 }}
             >
@@ -33,20 +33,20 @@ export function ScenarioHeader() {
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="flex items-center gap-3"
+            className="flex items-center gap-2 sm:gap-3"
           >
             <motion.div
               whileHover={{ scale: 1.05, borderColor: 'hsl(var(--primary) / 0.4)' }}
               transition={{ duration: 0.2 }}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-primary/10 border border-primary/20"
+              className="hidden sm:flex items-center gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-primary/10 border border-primary/20"
             >
               <motion.div
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
               >
-                <Leaf className="w-4 h-4 text-primary" />
+                <Leaf className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
               </motion.div>
-              <span className="text-sm font-medium text-primary">Energy Transition</span>
+              <span className="text-xs sm:text-sm font-medium text-primary">Energy Transition</span>
             </motion.div>
             
             {/* Theme Toggle */}

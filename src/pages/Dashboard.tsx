@@ -46,7 +46,7 @@ const Dashboard = () => {
       <BackgroundParticles />
       <ScenarioHeader />
       
-      <main className="container mx-auto px-6 py-8">
+      <main className="container mx-auto px-4 sm:px-6 py-4 sm:py-8">
         {/* Scenario intro - Core interaction explanation */}
         <AnimatedSection>
           <div className="mb-8">
@@ -54,7 +54,7 @@ const Dashboard = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="font-serif text-3xl sm:text-4xl text-foreground mb-3"
+              className="font-serif text-2xl sm:text-3xl md:text-4xl text-foreground mb-3"
             >
               Explore the Real-World Trade-Offs of Complex Decisions
             </motion.h1>
@@ -62,7 +62,7 @@ const Dashboard = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.6 }}
-              className="text-muted-foreground max-w-2xl mb-2"
+              className="text-sm sm:text-base text-muted-foreground max-w-2xl mb-2"
             >
               Adjust renewable energy investment allocation. Watch how this single decision creates competing outcomes across environmental, economic, and social dimensions—before you make it.
             </motion.p>
@@ -107,14 +107,14 @@ const Dashboard = () => {
         {!comparisonMode ? (
           <>
             <AnimatedSection delay={0.2}>
-              <div className="grid lg:grid-cols-12 gap-6 mb-8">
+              <div className="grid lg:grid-cols-12 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 {/* Left: Decision control */}
-                <div className="lg:col-span-4">
+                <div className="lg:col-span-4 order-2 lg:order-1">
                   <DecisionSlider />
                 </div>
                 
                 {/* Right: Metrics grid */}
-                <div className="lg:col-span-8">
+                <div className="lg:col-span-8 order-1 lg:order-2">
                   <MetricsGrid />
                 </div>
               </div>

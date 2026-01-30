@@ -130,10 +130,10 @@ export function ImpactMetric({
         
         {/* Value */}
         <div className="flex items-baseline gap-2 mb-2">
-          <motion.span className="font-serif text-4xl text-foreground">
+          <motion.span className="font-serif text-3xl sm:text-4xl text-foreground">
             {displayValue}
           </motion.span>
-          <span className="text-sm text-muted-foreground">{unit}</span>
+          <span className="text-xs sm:text-sm text-muted-foreground">{unit}</span>
         </div>
         
         {/* Description */}

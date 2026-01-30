@@ -40,23 +40,23 @@ export function InsightPanel() {
       transition={{ delay: 0.5, duration: 0.5 }}
       className="metric-card"
     >
-      <div className="flex items-start gap-4">
-        <div className={`p-2.5 rounded-xl ${colorMap[insightType]}`}>
+      <div className="flex items-start gap-3 sm:gap-4">
+        <div className={`p-2 sm:p-2.5 rounded-xl flex-shrink-0 ${colorMap[insightType]}`}>
           {isGeneratingInsight ? (
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
             >
-              <Sparkles className="w-5 h-5" />
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
             </motion.div>
           ) : (
-            <Icon className="w-5 h-5" />
+            <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
           )}
         </div>
         
-        <div className="flex-1">
-          <div className="flex items-center gap-2 mb-2">
-            <h3 className="font-serif text-lg text-foreground">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
+            <h3 className="font-serif text-base sm:text-lg text-foreground">
               What Changed and Why
             </h3>
             {isGeneratingInsight && (
@@ -69,7 +69,7 @@ export function InsightPanel() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
-            className="text-muted-foreground text-sm leading-relaxed"
+            className="text-muted-foreground text-xs sm:text-sm leading-relaxed"
           >
             {insight}
           </motion.p>

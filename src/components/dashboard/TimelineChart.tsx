@@ -84,16 +84,16 @@ export function TimelineChart() {
       transition={{ delay: 0.4, duration: 0.5 }}
       className="metric-card"
     >
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="font-serif text-xl text-foreground mb-2">
+            <h3 className="font-serif text-lg sm:text-xl text-foreground mb-2">
               10-Year Impact Trajectory
             </h3>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground">
               Projected outcomes based on {investmentLevel}% renewable investment
             </p>
-            <p className="text-xs text-muted-foreground/70 mt-1">
+            <p className="text-xs text-muted-foreground/70 mt-1 hidden sm:block">
               {showUncertainty 
                 ? 'Shaded areas show uncertainty ranges. Hover to see detailed values.'
                 : 'Hover over the chart to see detailed values for each year'}
@@ -102,7 +102,7 @@ export function TimelineChart() {
         </div>
       </div>
       
-      <div className="h-[300px] w-full">
+      <div className="h-[250px] sm:h-[300px] w-full">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={data}
