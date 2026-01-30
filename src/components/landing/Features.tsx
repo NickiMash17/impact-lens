@@ -51,8 +51,8 @@ const features = [
 
 export function Features() {
   return (
-    <section className="py-32 relative">
-      <div className="container mx-auto px-6">
+    <section className="py-16 sm:py-24 md:py-32 relative">
+      <div className="container mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -60,15 +60,15 @@ export function Features() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-serif text-3xl sm:text-4xl text-foreground mb-4">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl text-foreground mb-3 sm:mb-4">
             Explore consequences, not answers
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto px-2">
             One decision lever. Multiple dimensions. Clear trade-offs. No overconfidence.
           </p>
         </motion.div>
         
-        <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
           {features.map((feature, i) => (
             <motion.div
               key={feature.title}
@@ -76,7 +76,7 @@ export function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.5 }}
-              className="glass-card p-8 text-center group hover:border-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 cursor-pointer"
+              className="glass-card p-6 sm:p-8 text-center group hover:border-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10 cursor-pointer"
             >
               <motion.div 
                 whileHover={{ scale: 1.1, rotate: 5 }}

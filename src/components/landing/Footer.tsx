@@ -13,17 +13,17 @@ export function Footer() {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.6 }}
-      className="border-t border-border/40 py-12 relative overflow-hidden"
+      className="border-t border-border/40 py-8 sm:py-12 relative overflow-hidden"
     >
       {/* Subtle background effect */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-50" />
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-center sm:text-left"
         >
           <motion.div
             className="flex items-center gap-2"
@@ -34,15 +34,15 @@ export function Footer() {
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
-              <Layers className="w-5 h-5 text-primary" />
+              <Layers className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             </motion.div>
-            <span className="font-serif text-lg">Impact Lens</span>
+            <span className="font-serif text-base sm:text-lg">Impact Lens</span>
           </motion.div>
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-sm text-muted-foreground"
+            className="text-xs sm:text-sm text-muted-foreground"
           >
             A decision intelligence prototype. Data is simulated.
           </motion.p>
