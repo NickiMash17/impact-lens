@@ -100,7 +100,7 @@ export function SensitivityAnalysis() {
         exit={{ opacity: 0, y: -20 }}
         className="mb-6"
       >
-        <Card className="p-6 bg-muted/30 border-primary/20">
+        <Card className="p-4 sm:p-6 bg-muted/30 border-primary/20">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-2">
               <BarChart3 className="w-5 h-5 text-primary" />

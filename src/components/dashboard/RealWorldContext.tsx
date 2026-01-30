@@ -111,7 +111,7 @@ export function RealWorldContext() {
         exit={{ opacity: 0, y: -20 }}
         className="mb-6"
       >
-        <Card className="p-6 bg-muted/30 border-primary/20">
+        <Card className="p-4 sm:p-6 bg-muted/30 border-primary/20">
           <div className="flex items-start justify-between mb-4">
             <div className="flex items-center gap-2">
               <Globe className="w-5 h-5 text-primary" />
@@ -187,7 +187,7 @@ export function RealWorldContext() {
                   Global Benchmarks
                 </span>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
                 {benchmarks.map((benchmark) => {
                   const isClosest = benchmark.country === closestBenchmark.country;
                   return (
