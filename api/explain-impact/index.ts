@@ -4,7 +4,7 @@
  * This is a production-ready backend endpoint for Impact Lens.
  * It securely handles OpenAI API calls for AI-generated explanations.
  * 
- * Deploy to: Vercel, Netlify, or Cloudflare Workers
+ * Deploy to: Vercel or Cloudflare Workers
  */
 
 import type { VercelRequest, VercelResponse } from '@vercel/node';

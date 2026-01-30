@@ -28,32 +28,6 @@ vercel
 
 ---
 
-### 🌐 Netlify
-
-**Why Netlify?**
-- Great free tier
-- Easy GitHub integration
-- Built-in form handling and serverless functions
-
-**Steps:**
-1. Push code to GitHub
-2. Visit [netlify.com](https://netlify.com) and sign in
-3. Click "Add new site" → "Import an existing project"
-4. Connect GitHub repository
-5. Build settings:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-6. (Optional) Add `VITE_OPENAI_API_KEY` in Environment Variables
-7. Click "Deploy site"
-
-**Deploy via CLI:**
-```bash
-npm i -g netlify-cli
-netlify deploy --prod
-```
-
----
-
 ### ⚡ Cloudflare Pages
 
 **Why Cloudflare Pages?**
@@ -114,7 +88,6 @@ The app works perfectly without an API key (uses fallback insights). To enable A
 
 **Where to add:**
 - **Vercel:** Project Settings → Environment Variables
-- **Netlify:** Site Settings → Environment Variables
 - **Cloudflare:** Pages → Your Project → Settings → Environment Variables
 
 ---
@@ -176,7 +149,6 @@ The build output will be in the `dist/` folder.
 All platforms support custom domains on free tier:
 
 - **Vercel:** Project Settings → Domains
-- **Netlify:** Site Settings → Domain Management
 - **Cloudflare:** Pages → Your Project → Custom Domains
 
 ---

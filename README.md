@@ -214,31 +214,6 @@ vercel
 vercel --prod
 ```
 
-### Deploy to Netlify
-
-**Option 1: Deploy via Netlify Dashboard**
-1. Push your code to GitHub
-2. Go to [netlify.com](https://netlify.com) and sign in
-3. Click "Add new site" → "Import an existing project"
-4. Connect your GitHub repository
-5. Build settings:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-6. (Optional) Add environment variable: `VITE_OPENAI_API_KEY`
-7. Click "Deploy site"
-
-**Option 2: Deploy via Netlify CLI**
-```sh
-# Install Netlify CLI
-npm i -g netlify-cli
-
-# Deploy
-netlify deploy
-
-# For production deployment
-netlify deploy --prod
-```
-
 ### Deploy to Cloudflare Pages
 
 1. Push your code to GitHub

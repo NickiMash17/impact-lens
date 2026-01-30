@@ -10,7 +10,6 @@
 ## ✅ Configuration Files
 
 - [x] `vercel.json` created for Vercel deployment
-- [x] `netlify.toml` created for Netlify deployment
 - [x] `package.json` has correct build scripts
 - [x] `.gitignore` includes `dist/` folder
 
@@ -51,6 +50,5 @@
 
 Choose your platform:
 1. **Vercel** (Recommended) - Easiest, zero config
-2. **Netlify** - Great free tier
-3. **Cloudflare Pages** - Fast CDN
-4. **GitHub Pages** - Simple for public repos
+2. **Cloudflare Pages** - Fast CDN
+3. **GitHub Pages** - Simple for public repos
