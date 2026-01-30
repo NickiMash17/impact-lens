@@ -101,16 +101,38 @@ By making trade-offs visible and explainable. Extends usefulness beyond the indi
 
 ### Technical Stack
 
-**Frontend:**
-- **React 18 + TypeScript** - Type-safe UI
-- **Vite** - Fast build tool and dev server
-- **Zustand** - Minimal state management
-- **Pure Simulation Engine** - Deterministic, explainable calculations (client-side)
-- **Recharts** - Data visualization
-- **Framer Motion** - Purposeful animations
-- **Radix UI + Tailwind CSS** - Editorial-quality design system
+<div align="center">
 
-**Backend:**
+**Frontend:**
+<br/>
+
+![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-5.4.19-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Zustand](https://img.shields.io/badge/Zustand-5.0.10-FF6B6B?style=for-the-badge&logo=zustand&logoColor=white)
+
+![Recharts](https://img.shields.io/badge/Recharts-2.15.4-FF6B6B?style=for-the-badge&logo=chartdotjs&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer%20Motion-12.29.2-0055FF?style=for-the-badge&logo=framer&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4.17-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Radix UI](https://img.shields.io/badge/Radix%20UI-Latest-161618?style=for-the-badge&logo=radix-ui&logoColor=white)
+
+**Backend & Services:**
+<br/>
+
+![Serverless](https://img.shields.io/badge/Serverless-Functions-FD5750?style=for-the-badge&logo=serverless&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-API-412991?style=for-the-badge&logo=openai&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)
+
+</div>
+
+**Key Technologies:**
+- **React 18 + TypeScript** - Type-safe UI framework
+- **Vite** - Fast build tool and dev server
+- **Zustand** - Minimal, performant state management
+- **Pure Simulation Engine** - Deterministic, explainable calculations (client-side)
+- **Recharts** - Beautiful, responsive data visualization
+- **Framer Motion** - Purposeful, performant animations
+- **Radix UI + Tailwind CSS** - Accessible, editorial-quality design system
 - **Serverless Functions** - Minimal backend for AI explanation generation
 - **OpenAI API** - Contextual insight generation (with fallback)
 
