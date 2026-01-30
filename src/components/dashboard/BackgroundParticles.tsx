@@ -40,7 +40,7 @@ export function BackgroundParticles() {
   }, [theme]);
 
   return (
-    <div className={`fixed inset-0 pointer-events-none overflow-hidden ${isDark ? 'opacity-[0.03]' : 'opacity-[0.08]'}`}>
+    <div className={`fixed inset-0 pointer-events-none overflow-hidden ${isDark ? 'opacity-[0.08]' : 'opacity-[0.15]'}`}>
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
@@ -54,7 +54,7 @@ export function BackgroundParticles() {
           animate={{
             y: [0, -30, 0],
             x: [0, Math.random() * 20 - 10, 0],
-            opacity: isDark ? [0.3, 0.6, 0.3] : [0.4, 0.7, 0.4],
+            opacity: isDark ? [0.5, 0.8, 0.5] : [0.6, 0.9, 0.6],
           }}
           transition={{
             duration: particle.duration,

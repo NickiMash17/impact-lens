@@ -33,7 +33,7 @@ export function EnhancedBackground() {
     <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
       {/* Animated gradient orbs */}
       <motion.div
-        className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20"
+        className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-35"
         style={{
           background: isDark
             ? 'radial-gradient(circle, hsl(158 35% 42% / 0.3) 0%, transparent 70%)'
@@ -51,7 +51,7 @@ export function EnhancedBackground() {
         }}
       />
       <motion.div
-        className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-15"
+        className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full blur-3xl opacity-30"
         style={{
           background: isDark
             ? 'radial-gradient(circle, hsl(18 45% 52% / 0.3) 0%, transparent 70%)'
@@ -70,7 +70,7 @@ export function EnhancedBackground() {
         }}
       />
       <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-10"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
         style={{
           background: isDark
             ? 'radial-gradient(circle, hsl(220 25% 15% / 0.5) 0%, transparent 70%)'
@@ -87,7 +87,7 @@ export function EnhancedBackground() {
       />
 
       {/* Subtle grid pattern */}
-      <svg className="absolute inset-0 w-full h-full" style={{ opacity: isDark ? 0.03 : 0.05 }}>
+      <svg className="absolute inset-0 w-full h-full" style={{ opacity: isDark ? 0.08 : 0.12 }}>
         <defs>
           <pattern
             id="grid"
@@ -110,11 +110,11 @@ export function EnhancedBackground() {
         className="absolute inset-0"
         style={{
           background: isDark
-            ? 'radial-gradient(ellipse at top left, hsl(158 35% 42% / 0.05) 0%, transparent 50%), radial-gradient(ellipse at bottom right, hsl(18 45% 52% / 0.05) 0%, transparent 50%)'
-            : 'radial-gradient(ellipse at top left, hsl(158 40% 35% / 0.08) 0%, transparent 50%), radial-gradient(ellipse at bottom right, hsl(18 50% 45% / 0.06) 0%, transparent 50%)',
+            ? 'radial-gradient(ellipse at top left, hsl(158 35% 42% / 0.12) 0%, transparent 50%), radial-gradient(ellipse at bottom right, hsl(18 45% 52% / 0.10) 0%, transparent 50%)'
+            : 'radial-gradient(ellipse at top left, hsl(158 40% 35% / 0.15) 0%, transparent 50%), radial-gradient(ellipse at bottom right, hsl(18 50% 45% / 0.12) 0%, transparent 50%)',
         }}
         animate={{
-          opacity: [0.5, 0.8, 0.5],
+          opacity: [0.6, 0.9, 0.6],
         }}
         transition={{
           duration: 8,

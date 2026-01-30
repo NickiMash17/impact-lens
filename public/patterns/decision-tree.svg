@@ -1,0 +1,45 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" opacity="0.08">
+  <!-- Decision tree pattern representing decision-making -->
+  <defs>
+    <style>
+      .branch { stroke: currentColor; stroke-width: 0.5; fill: none; }
+      .node { fill: currentColor; }
+    </style>
+  </defs>
+  
+  <!-- Root decision node -->
+  <circle class="node" cx="50" cy="10" r="2"/>
+  
+  <!-- Branches -->
+  <line class="branch" x1="50" y1="10" x2="30" y2="30"/>
+  <line class="branch" x1="50" y1="10" x2="50" y2="30"/>
+  <line class="branch" x1="50" y1="10" x2="70" y2="30"/>
+  
+  <!-- Second level nodes -->
+  <circle class="node" cx="30" cy="30" r="2"/>
+  <circle class="node" cx="50" cy="30" r="2"/>
+  <circle class="node" cx="70" cy="30" r="2"/>
+  
+  <!-- Second level branches -->
+  <line class="branch" x1="30" y1="30" x2="20" y2="50"/>
+  <line class="branch" x1="30" y1="30" x2="40" y2="50"/>
+  <line class="branch" x1="50" y1="30" x2="45" y2="50"/>
+  <line class="branch" x1="50" y1="30" x2="55" y2="50"/>
+  <line class="branch" x1="70" y1="30" x2="60" y2="50"/>
+  <line class="branch" x1="70" y1="30" x2="80" y2="50"/>
+  
+  <!-- Third level nodes -->
+  <circle class="node" cx="20" cy="50" r="1.5"/>
+  <circle class="node" cx="40" cy="50" r="1.5"/>
+  <circle class="node" cx="45" cy="50" r="1.5"/>
+  <circle class="node" cx="55" cy="50" r="1.5"/>
+  <circle class="node" cx="60" cy="50" r="1.5"/>
+  <circle class="node" cx="80" cy="50" r="1.5"/>
+  
+  <!-- Impact lines (ripple effects) -->
+  <line class="branch" x1="20" y1="50" x2="15" y2="70"/>
+  <line class="branch" x1="40" y1="50" x2="35" y2="70"/>
+  <line class="branch" x1="55" y1="50" x2="50" y2="70"/>
+  <line class="branch" x1="60" y1="50" x2="65" y2="70"/>
+  <line class="branch" x1="80" y1="50" x2="85" y2="70"/>
+</svg>

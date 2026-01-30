@@ -1,0 +1,27 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" opacity="0.08">
+  <!-- Balance scale representing trade-offs -->
+  <defs>
+    <style>
+      .scale { stroke: currentColor; stroke-width: 1.5; fill: none; }
+      .weight { fill: currentColor; opacity: 0.5; }
+    </style>
+  </defs>
+  
+  <!-- Base -->
+  <line class="scale" x1="60" y1="100" x2="60" y2="20"/>
+  
+  <!-- Beam -->
+  <line class="scale" x1="20" y1="20" x2="100" y2="20"/>
+  
+  <!-- Left side (one outcome) -->
+  <line class="scale" x1="20" y1="20" x2="20" y2="50"/>
+  <rect class="weight" x="10" y="50" width="20" height="15" rx="2"/>
+  
+  <!-- Right side (competing outcome) -->
+  <line class="scale" x1="100" y1="20" x2="100" y2="50"/>
+  <rect class="weight" x="90" y="50" width="20" height="15" rx="2"/>
+  
+  <!-- Labels -->
+  <text x="20" y="75" font-size="8" text-anchor="middle" fill="currentColor" opacity="0.4">Cost</text>
+  <text x="100" y="75" font-size="8" text-anchor="middle" fill="currentColor" opacity="0.4">Benefit</text>
+</svg>

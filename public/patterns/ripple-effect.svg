@@ -1,0 +1,24 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" opacity="0.06">
+  <!-- Ripple effect pattern representing impact propagation -->
+  <defs>
+    <style>
+      .ripple { stroke: currentColor; stroke-width: 1; fill: none; opacity: 0.3; }
+    </style>
+  </defs>
+  
+  <!-- Center point (decision) -->
+  <circle cx="100" cy="100" r="3" fill="currentColor"/>
+  
+  <!-- Concentric ripples (impact waves) -->
+  <circle class="ripple" cx="100" cy="100" r="20"/>
+  <circle class="ripple" cx="100" cy="100" r="40"/>
+  <circle class="ripple" cx="100" cy="100" r="60"/>
+  <circle class="ripple" cx="100" cy="100" r="80"/>
+  <circle class="ripple" cx="100" cy="100" r="100"/>
+  
+  <!-- Secondary ripples -->
+  <circle class="ripple" cx="50" cy="50" r="15"/>
+  <circle class="ripple" cx="150" cy="50" r="15"/>
+  <circle class="ripple" cx="50" cy="150" r="15"/>
+  <circle class="ripple" cx="150" cy="150" r="15"/>
+</svg>
