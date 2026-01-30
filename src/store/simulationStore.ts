@@ -26,6 +26,25 @@ interface SimulationState {
   scenarioA: ComparisonScenario | null;
   scenarioB: ComparisonScenario | null;
   
+  // Real-world context
+  showRealWorldContext: boolean;
+  setShowRealWorldContext: (show: boolean) => void;
+  
+  // Sensitivity analysis
+  showUncertainty: boolean;
+  setShowUncertainty: (show: boolean) => void;
+  
+  // Decision rationale
+  decisionRationale: string;
+  setDecisionRationale: (rationale: string) => void;
+  showDecisionRationale: boolean;
+  setShowDecisionRationale: (show: boolean) => void;
+  
+  // Toast notifications
+  toasts: Array<{ id: string; message: string; type: 'success' | 'info' | 'warning' }>;
+  addToast: (message: string, type?: 'success' | 'info' | 'warning') => void;
+  removeToast: (id: string) => void;
+  
   // Actions
   setInvestmentLevel: (level: number) => Promise<void>;
   toggleComparisonMode: () => void;
@@ -48,6 +67,29 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
   comparisonMode: false,
   scenarioA: null,
   scenarioB: null,
+  
+  showRealWorldContext: false,
+  setShowRealWorldContext: (show: boolean) => set({ showRealWorldContext: show }),
+  
+  showUncertainty: false,
+  setShowUncertainty: (show: boolean) => set({ showUncertainty: show }),
+  
+  decisionRationale: '',
+  setDecisionRationale: (rationale: string) => set({ decisionRationale: rationale }),
+  showDecisionRationale: false,
+  setShowDecisionRationale: (show: boolean) => set({ showDecisionRationale: show }),
+  
+  toasts: [],
+  addToast: (message: string, type: 'success' | 'info' | 'warning' = 'info') => {
+    const id = Math.random().toString(36).substring(7);
+    set((state) => ({ toasts: [...state.toasts, { id, message, type }] }));
+    setTimeout(() => {
+      set((state) => ({ toasts: state.toasts.filter((t) => t.id !== id) }));
+    }, 4000);
+  },
+  removeToast: (id: string) => {
+    set((state) => ({ toasts: state.toasts.filter((t) => t.id !== id) }));
+  },
   
   setInvestmentLevel: async (level) => {
     const state = get();
@@ -93,6 +135,7 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
         label: `Scenario A (${state.investmentLevel}%)`,
       },
     });
+    get().addToast('Scenario A locked successfully', 'success');
   },
   
   lockScenarioB: () => {
@@ -104,6 +147,7 @@ export const useSimulationStore = create<SimulationState>((set, get) => ({
         label: `Scenario B (${state.investmentLevel}%)`,
       },
     });
+    get().addToast('Scenario B locked successfully', 'success');
   },
   
   clearComparison: () => {
