@@ -190,6 +190,75 @@ npm run dev
 
 The application will be available at `http://localhost:8080`
 
+## Deployment
+
+### Deploy to Vercel (Recommended)
+
+**Option 1: Deploy via Vercel Dashboard**
+1. Push your code to GitHub
+2. Go to [vercel.com](https://vercel.com) and sign in
+3. Click "New Project" and import your GitHub repository
+4. Vercel will auto-detect Vite settings
+5. (Optional) Add environment variable: `VITE_OPENAI_API_KEY` if you want AI insights
+6. Click "Deploy"
+
+**Option 2: Deploy via Vercel CLI**
+```sh
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel
+
+# For production deployment
+vercel --prod
+```
+
+### Deploy to Netlify
+
+**Option 1: Deploy via Netlify Dashboard**
+1. Push your code to GitHub
+2. Go to [netlify.com](https://netlify.com) and sign in
+3. Click "Add new site" → "Import an existing project"
+4. Connect your GitHub repository
+5. Build settings:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+6. (Optional) Add environment variable: `VITE_OPENAI_API_KEY`
+7. Click "Deploy site"
+
+**Option 2: Deploy via Netlify CLI**
+```sh
+# Install Netlify CLI
+npm i -g netlify-cli
+
+# Deploy
+netlify deploy
+
+# For production deployment
+netlify deploy --prod
+```
+
+### Deploy to Cloudflare Pages
+
+1. Push your code to GitHub
+2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com) → Pages
+3. Click "Create a project" → "Connect to Git"
+4. Select your repository
+5. Build settings:
+   - Framework preset: Vite
+   - Build command: `npm run build`
+   - Build output directory: `dist`
+6. (Optional) Add environment variable: `VITE_OPENAI_API_KEY`
+7. Click "Save and Deploy"
+
+### Environment Variables
+
+For AI insights to work, add this environment variable in your deployment platform:
+- `VITE_OPENAI_API_KEY` - Your OpenAI API key (optional, app works without it)
+
+**Note:** The app functions perfectly without the API key - it will use deterministic fallback insights.
+
 ### Available Scripts
 
 - `npm run dev` - Start development server
