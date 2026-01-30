@@ -30,6 +30,10 @@ import { QuickGuide } from '@/components/dashboard/QuickGuide';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { KeyboardShortcuts } from '@/components/dashboard/KeyboardShortcuts';
 import { WelcomeMessage } from '@/components/dashboard/WelcomeMessage';
+import { RealWorldContext } from '@/components/dashboard/RealWorldContext';
+import { SensitivityAnalysis } from '@/components/dashboard/SensitivityAnalysis';
+import { DecisionRationale } from '@/components/dashboard/DecisionRationale';
+import { ToastNotifications } from '@/components/dashboard/ToastNotifications';
 import { useSimulationStore } from '@/store/simulationStore';
 
 const Dashboard = () => {
@@ -78,6 +82,20 @@ const Dashboard = () => {
           <ComparisonMode />
         </AnimatedSection>
         
+        {/* Real-World Context */}
+        {!comparisonMode && (
+          <AnimatedSection delay={0.12}>
+            <RealWorldContext />
+          </AnimatedSection>
+        )}
+        
+        {/* Sensitivity Analysis */}
+        {!comparisonMode && (
+          <AnimatedSection delay={0.13}>
+            <SensitivityAnalysis />
+          </AnimatedSection>
+        )}
+        
         {/* Trade-off Signal - Shows when competing outcomes occur */}
         {!comparisonMode && (
           <AnimatedSection delay={0.15}>
@@ -115,6 +133,13 @@ const Dashboard = () => {
                 <InsightPanel />
               </div>
             </AnimatedSection>
+            
+            {/* Decision Rationale */}
+            <AnimatedSection delay={0.45}>
+              <div className="mb-8">
+                <DecisionRationale />
+              </div>
+            </AnimatedSection>
           </>
         ) : (
           // Show slider in comparison mode when scenarios aren't both locked
@@ -139,6 +164,9 @@ const Dashboard = () => {
       
       {/* Keyboard shortcuts */}
       <KeyboardShortcuts />
+      
+      {/* Toast notifications */}
+      <ToastNotifications />
     </div>
   );
 };

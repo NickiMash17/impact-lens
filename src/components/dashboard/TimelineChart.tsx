@@ -12,6 +12,7 @@ import {
 } from 'recharts';
 import { useSimulationStore } from '@/store/simulationStore';
 import { generateProjection } from '@/lib/simulation';
+import { ImpactMetrics } from '@/lib/simulation';
 
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
@@ -41,12 +42,39 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
+function calculateUncertaintyForProjection(
+  baseData: ReturnType<typeof generateProjection>,
+  investmentLevel: number
+) {
+  return baseData.map((point, index) => {
+    const yearProgress = index / 10;
+    const uncertaintyFactor = 0.05 + (investmentLevel / 100) * 0.15;
+    
+    return {
+      ...point,
+      carbonReductionMin: Math.max(0, point.carbonReduction * (1 - 0.08)),
+      carbonReductionMax: Math.min(100, point.carbonReduction * (1 + 0.08)),
+      jobsCreatedMin: Math.max(0, point.jobsCreated * (1 - 0.15)),
+      jobsCreatedMax: point.jobsCreated * (1 + 0.15),
+      gdpGrowthMin: point.gdpGrowth * (1 - 0.25),
+      gdpGrowthMax: point.gdpGrowth * (1 + 0.25),
+    };
+  });
+}
+
 export function TimelineChart() {
-  const { investmentLevel } = useSimulationStore();
+  const { investmentLevel, showUncertainty } = useSimulationStore();
   
-  const data = useMemo(
+  const baseData = useMemo(
     () => generateProjection({ renewableInvestmentPercent: investmentLevel }),
     [investmentLevel]
+  );
+  
+  const data = useMemo(
+    () => showUncertainty 
+      ? calculateUncertaintyForProjection(baseData, investmentLevel)
+      : baseData,
+    [baseData, investmentLevel, showUncertainty]
   );
   
   return (
@@ -66,7 +94,9 @@ export function TimelineChart() {
               Projected outcomes based on {investmentLevel}% renewable investment
             </p>
             <p className="text-xs text-muted-foreground/70 mt-1">
-              Hover over the chart to see detailed values for each year
+              {showUncertainty 
+                ? 'Shaded areas show uncertainty ranges. Hover to see detailed values.'
+                : 'Hover over the chart to see detailed values for each year'}
             </p>
           </div>
         </div>
@@ -126,6 +156,7 @@ export function TimelineChart() {
                 <span style={{ color: 'hsl(40, 15%, 75%)' }}>{value}</span>
               )}
             />
+            
             
             <Area
               type="monotone"

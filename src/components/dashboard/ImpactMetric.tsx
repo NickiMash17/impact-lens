@@ -67,9 +67,23 @@ export function ImpactMetric({
           transition={{ duration: 0.3 }}
           className="metric-card group relative overflow-hidden cursor-pointer"
         >
-      {/* Subtle gradient overlay on hover */}
+      {/* Enhanced gradient overlay on hover */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+        className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+      />
+      
+      {/* Shimmer effect on hover */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100"
+        animate={{
+          x: ['-100%', '200%'],
+        }}
+        transition={{
+          duration: 1.5,
+          repeat: Infinity,
+          repeatDelay: 2,
+          ease: 'linear',
+        }}
       />
       
       <div className="relative">

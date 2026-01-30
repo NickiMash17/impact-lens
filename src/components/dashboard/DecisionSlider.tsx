@@ -83,8 +83,16 @@ export function DecisionSlider() {
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
             whileHover={{ scale: 1.1 }}
           >
-            <div className="inline-flex items-baseline gap-1 bg-card border border-border rounded-lg px-3 py-1.5 shadow-lg hover:shadow-xl hover:border-primary/40 transition-all duration-300">
-              <span className="font-serif text-2xl text-foreground">{investmentLevel}</span>
+            <div className="inline-flex items-baseline gap-1 bg-gradient-to-br from-card to-card/80 border border-primary/30 rounded-lg px-4 py-2 shadow-xl hover:shadow-2xl hover:border-primary/50 hover:scale-105 transition-all duration-300 backdrop-blur-sm">
+              <motion.span 
+                className="font-serif text-2xl text-foreground font-semibold"
+                key={investmentLevel}
+                initial={{ scale: 1.2, color: 'hsl(var(--primary))' }}
+                animate={{ scale: 1, color: 'hsl(var(--foreground))' }}
+                transition={{ duration: 0.3 }}
+              >
+                {investmentLevel}
+              </motion.span>
               <span className="text-sm text-muted-foreground">%</span>
             </div>
           </motion.div>
