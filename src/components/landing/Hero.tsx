@@ -3,6 +3,7 @@ import { ArrowRight, Layers } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { AnimatedMetric } from './AnimatedMetric';
+import { AIRobotIllustration } from './AIRobotIllustration';
 import { useRef } from 'react';
 
 const metrics = [
@@ -28,15 +29,18 @@ export function Hero() {
 
   return (
     <section ref={containerRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* AI Robot Illustration */}
+      <AIRobotIllustration />
+      
       {/* Subtle gradient background with parallax */}
       <motion.div 
-        className="absolute inset-0 bg-gradient-to-b from-background via-background to-card/30"
+        className="absolute inset-0 bg-gradient-to-b from-background via-background to-card/30 z-[1]"
         style={{ y: backgroundY }}
       />
       
       {/* Subtle grid pattern with parallax */}
       <motion.div 
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.03] z-[2]"
         style={{
           backgroundImage: `linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
                            linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)`,
@@ -47,12 +51,12 @@ export function Hero() {
       
       {/* Accent glow with parallax */}
       <motion.div 
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 blur-[120px] rounded-full z-[3]"
         style={{ y: glowY }}
       />
       
       <motion.div 
-        className="relative z-10 container mx-auto px-6 py-20"
+        className="relative z-20 container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20"
         style={{ y: contentY, opacity }}
       >
         <motion.div
@@ -108,7 +112,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-xl sm:text-2xl text-muted-foreground font-light max-w-2xl mx-auto mb-12 leading-relaxed"
+            className="text-lg sm:text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed px-2"
           >
             Simulate one decision. Watch the consequences unfold across 
             economic, social, and environmental dimensions—in real time.
@@ -165,7 +169,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1, duration: 0.8 }}
           style={{ y: previewY }}
-          className="mt-20 max-w-5xl mx-auto"
+          className="mt-12 sm:mt-16 md:mt-20 max-w-5xl mx-auto px-2"
         >
           <motion.div 
             className="relative rounded-2xl border border-border/40 bg-card/50 dark:bg-card/30 backdrop-blur-sm p-1 shadow-2xl"
@@ -175,8 +179,8 @@ export function Hero() {
             }}
             transition={{ duration: 0.3 }}
           >
-            <div className="rounded-xl bg-gradient-to-b from-card/90 dark:from-card to-background p-8 sm:p-12">
-              <div className="grid grid-cols-3 gap-6 sm:gap-8">
+            <div className="rounded-xl bg-gradient-to-b from-card/90 dark:from-card to-background p-4 sm:p-8 md:p-12">
+              <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8">
                 {metrics.map((metric, i) => (
                   <AnimatedMetric
                     key={metric.label}
