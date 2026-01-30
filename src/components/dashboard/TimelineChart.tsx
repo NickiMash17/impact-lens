@@ -14,12 +14,22 @@ import { useSimulationStore } from '@/store/simulationStore';
 import { generateProjection } from '@/lib/simulation';
 import { ImpactMetrics } from '@/lib/simulation';
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+interface TooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    name: string;
+    value: number;
+    color: string;
+  }>;
+  label?: string;
+}
+
+const CustomTooltip = ({ active, payload, label }: TooltipProps) => {
   if (active && payload && payload.length) {
     return (
       <div className="bg-card border border-border rounded-lg p-3 shadow-lg">
         <p className="font-serif text-sm text-foreground mb-2">{label}</p>
-        {payload.map((entry: any, index: number) => (
+        {payload.map((entry, index: number) => (
           <div key={index} className="flex items-center gap-2 text-xs">
             <span
               className="w-2 h-2 rounded-full"
